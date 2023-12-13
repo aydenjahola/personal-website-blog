@@ -1,46 +1,46 @@
 export default {
-  name: 'post',
-  type: 'document',
-  title: 'Post',
+  name: "post",
+  type: "document",
+  title: "Post",
   fields: [
     {
-      name: 'title',
-      type: 'string',
-      title: 'Title',
+      name: "title",
+      type: "string",
+      title: "Title",
     },
     {
-      name: 'overview',
-      type: 'string',
-      title: 'Overview',
+      name: "overview",
+      type: "string",
+      title: "Overview",
     },
     {
-      name: 'slug',
-      type: 'slug',
-      title: 'Slug',
+      name: "slug",
+      type: "slug",
+      title: "Slug",
       options: {
-        source: 'title',
+        source: "title",
         maxLength: 96,
       },
     },
     {
-      name: 'content',
-      type: 'array',
-      title: 'Content',
+      name: "content",
+      type: "array",
+      title: "Content",
       of: [
         {
-          type: 'block',
+          type: "block",
         },
         {
-          type: 'image',
+          type: "image",
           fields: [
             {
-              name: 'alt',
-              type: 'text',
-              title: 'Alternative text',
+              name: "alt",
+              type: "text",
+              title: "Alternative text",
             },
           ],
         },
       ],
     },
   ],
-}
+};
