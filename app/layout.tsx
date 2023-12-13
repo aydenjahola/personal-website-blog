@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
 import { Providers } from "./components/Providers";
 import "./globals.css";
@@ -25,6 +26,7 @@ export default function RootLayout({
           <Navbar />
           <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             {children}
+            <Analytics />
           </main>
         </Providers>
       </body>
