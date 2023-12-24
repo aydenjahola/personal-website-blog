@@ -1,46 +1,53 @@
-export default {
+import { Rule } from "sanity";
+
+export const post = {
   name: "post",
-  type: "document",
   title: "Post",
+  type: "document",
+
   fields: [
     {
       name: "title",
-      type: "string",
       title: "Title",
-    },
-    {
-      name: "overview",
       type: "string",
-      title: "Overview",
+      validation: (Rule: Rule) => Rule.required().error("Required"),
     },
     {
       name: "slug",
-      type: "slug",
       title: "Slug",
-      options: {
-        source: "title",
-        maxLength: 96,
-      },
+      type: "slug",
+      options: { source: "title" },
+      validation: (Rule: Rule) => Rule.required().error("Required"),
     },
     {
-      name: "content",
+      name: "publishedAt",
+      title: "Published at",
+      type: "datetime",
+      initialValue: () => new Date().toISOString(),
+    },
+    {
+      name: "excerpt",
+      title: "Excerpt",
+      type: "text",
+      validation: (Rule: Rule) => Rule.max(200).error("Max 200 characters"),
+    },
+    {
+      name: "body",
+      title: "Body",
       type: "array",
-      title: "Content",
       of: [
-        {
-          type: "block",
-        },
+        { type: "block" },
         {
           type: "image",
-          fields: [
-            {
-              name: "alt",
-              type: "text",
-              title: "Alternative text",
-            },
-          ],
+          fields: [{ type: "text", name: "alt", title: "Alt" }],
         },
       ],
+    },
+    {
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "tag" }] }],
     },
   ],
 };

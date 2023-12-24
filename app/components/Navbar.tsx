@@ -1,19 +1,24 @@
 import Link from "next/link";
-import ThemeButton from "./ThemeButton";
+import React from "react";
+import ThemeSwitch from "./ThemeSwitch";
+import { Lilita_One } from "next/font/google";
 
-export default function Navbar() {
+const font = Lilita_One({ weight: "400", subsets: ["latin"] });
+
+const Navbar = () => {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between h-16">
-        <div className="flex justify-between items-center w-full">
-          <Link href="/">
-            <h1 className="text-2xl font-medium">
-              Ayden <span className="text-teal-500">Blog</span>
-            </h1>
-          </Link>
-          <ThemeButton />
-        </div>
+    <div className="mx-auto max-w-5xl px-6">
+      <div className="flex justify-between items-center h-16 w-full">
+        <Link href="/">
+          <div className={`${font.className} text-3xl dark:text-amber-50`}>
+            Ayden
+            <span className="text-purple-500">Blog</span>
+          </div>
+        </Link>
+        <ThemeSwitch />
       </div>
     </div>
   );
-}
+};
+
+export default Navbar;

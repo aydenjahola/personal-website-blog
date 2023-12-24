@@ -10,12 +10,8 @@
  */
 
 import { NextStudio } from "next-sanity/studio";
-import config from "../../../sanity.config";
+import config from "../../../../sanity.config";
 
 export default function StudioPage() {
-  return (
-    <body className="mx-auto ">
-      <NextStudio config={config} />
-    </body>
-  );
+  return <NextStudio config={config} />;
 }
